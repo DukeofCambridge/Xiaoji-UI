@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Error from '@/components/Error'
 import Cinema from "@/components/Cinema/Cinema";
-import Finance from "@/components/Echarts/Finance"
+// import Finance from "@/components/Echarts/Finance"
 import Screen from "@/components/Cinema/Screen"
 import Home from "@/components/Home";
 import Strawberry from "@/components/Strawberry";
@@ -10,15 +10,33 @@ import Weather from "@/components/Weather";
 import Control from "@/components/Control";
 import Setting from "@/components/Setting";
 import News from "@/components/News";
+import Index from "@/components/Index";
+import Touchpad from "@/components/Touchpad";
+import Scenario from "@/components/Scenario";
 
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', redirect: '/home' },
+  // { path: '/', redirect: '/home' },
+  {
+    path: '/',
+    name: 'Index',
+    component: Index,
+  },
+  {
+    path: '/scenario',
+    name: 'Scenario',
+    component: Scenario,
+  },
+  {
+    path: '/touchpad',
+    name:'Touchpad',
+    component: Touchpad,
+  },
   {
     path: '/home',
     name:'Home',
-    component: Home
+    component: Home,
   },
   {
     path: '/cinema',
@@ -30,11 +48,11 @@ const routes = [
     name: 'Screen',
     component: Screen
   },
-  {
-    path:'/finance',
-    name:'Finance',
-    component: Finance
-  },
+  // {
+  //   path:'/finance',
+  //   name:'Finance',
+  //   component: Finance
+  // },
   {
     path:'/monitor',
     name:'Monitor',

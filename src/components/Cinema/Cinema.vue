@@ -23,16 +23,17 @@ export default {
   components: {Header, Films, Menu},
   methods: {
     listByCategory () {
-      var _this = this
-      var cid = this.$refs.sideMenu.cid
-      var url = 'categories/' + cid + '/books'
+      let _this = this
+      let type = this.$refs.sideMenu.type
+      console.log(type)
+      let url = '/video/type/' + type
       this.$axios.get(url).then(resp => {
         if (resp && resp.data.code === 200) {
-          _this.$refs.booksArea.books = resp.data.result
-          _this.$refs.booksArea.currentPage = 1
+          _this.$refs.booksArea.films = resp.data.object
+          // _this.$refs.booksArea.currentPage = 1
         }
       })
-    }
+    },
   }
 }
 </script>

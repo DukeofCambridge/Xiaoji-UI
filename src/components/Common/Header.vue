@@ -35,7 +35,7 @@ export default {
 
 <style scoped>
 .admin-header {
-  height: 60px;
+  height: 80px;
   opacity: 0.85;
   line-height: 40px;
   min-width: 900px;

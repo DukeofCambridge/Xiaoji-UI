@@ -234,7 +234,7 @@ export default {
 }
 
 .center-topic {
-  background: linear-gradient(125deg, rgb(247,59,12) 0%, rgb(5,64,190) 100%);
+  background: linear-gradient(125deg, rgb(237,47,106) 0%, rgb(34,162,195) 100%);
   display: flex;
   align-items: center;
   justify-content: center;

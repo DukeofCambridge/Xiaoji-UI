@@ -12,11 +12,23 @@ import Setting from "@/components/Setting";
 import News from "@/components/News";
 import WeatherToday from "@/components/Weather/WeatherToday";
 import WeatherFuture from "@/components/Weather/WeatherFuture";
+import Login from "@/components/Login";
+import FaceLogin from "@/components/FaceLogin";
 
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', redirect: '/home' },
+  { path: '/', redirect: '/Login' },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path:'/face',
+    name:'Face',
+    component: FaceLogin
+  },
   {
     path: '/home',
     name:'Home',

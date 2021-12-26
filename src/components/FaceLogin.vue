@@ -1,0 +1,106 @@
+<template>
+  <body>
+  <div style="height: 1px"></div>
+  <div id="login-box">
+    <h1 class="AIsing">小济智家</h1>
+    <button id="camera" class="camera" @click="openCamera">Open Camera</button>
+    <br>
+    <button id="faceLogin" class="faceLogin" @click="faceLogin">Face Login</button>
+    <br>
+
+    <div class="media">
+      <video id="video" width="320" height="240" preload autoplay loop muted></video>
+      <canvas id="canvas" width="320" height="240"></canvas>
+    </div>
+  </div>
+  </body>
+</template>
+
+<script>
+export default {
+  name: "FaceLogin"
+}
+</script>
+
+<style scoped>
+body {
+  background-image: url("../assets/img/bg2.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+#login-box {
+  width: 30%;
+  height: 400px;
+  margin: 10% auto 0;
+  border-radius: 40px;
+  text-align: center;
+  background: #00000060;
+  padding: 20px 50px;
+}
+
+#login-box h1 {
+  color: #fff;
+}
+
+#login-box .form .item input {
+  margin-top: 15px;
+}
+
+#login-box .form i {
+  font-size: 18px;
+  color: #fff;
+}
+
+#login-box .form .item input {
+  width: 180px;
+  font-size: 18px;
+  /* border: 0; */
+  border-bottom: 2px solid#fff;
+  padding: 5px 10px;
+  border-radius: 15px;
+  background: #ffffff00;
+  color: #fff;
+}
+
+.camera,
+.faceLogin {
+  margin-top: 10px;
+  /* vertical-align: auto; */
+  width: 166px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(to right, rgb(237,47,106) 0%, rgb(34,162,195) 100%);
+  /* border: 0; */
+  border-radius: 15px;
+}
+
+
+/* .register{
+    margin-top: 15px;
+    float: right;
+    width: 100px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    background:linear-gradient(to right,#684e4e 12%,#3b3a4ee1 40%);
+    border: 0;
+    border-radius: 15px;
+} */
+
+.AIsing {
+  font-style: italic;
+  text-shadow: 0px 0px 8px #fff, 0px 0px 42px #f72, 0px 0px 72px #f84, 0px 0px 150px #fa5;
+}
+
+video,
+canvas {
+  margin-left: -155px;
+  margin-top: 14px;
+  position: absolute;
+  /* border: 1px solid red; */
+}
+</style>

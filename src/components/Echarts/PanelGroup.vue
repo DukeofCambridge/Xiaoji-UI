@@ -62,19 +62,6 @@ export default {
   components: {
     CountTo
   },
-  created() {
-    init()
-    {
-      let _this = this
-      this.$axios.get('/courses/all').then(resp => {
-        if (resp && resp.data.code === 200) {
-          _this.courses = resp.data.object
-          _this.total = _this.courses.length
-          console.log(_this.courses)
-        }
-      })
-    }
-  },
   methods: {
     handleSetLineChartData (type) {
       this.$emit('handleSetLineChartData', type)

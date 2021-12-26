@@ -2,7 +2,7 @@
   <div style="margin-bottom: 30px;display: flex;justify-content: center;align-items: center">
     <el-input
       @keyup.enter.native="searchClick"
-      placeholder="通过电影名或演职人员搜索"
+      placeholder="请输入电影名称"
       prefix-icon="el-icon-search"
       size="small"
       style="width: 400px;margin-right: 10px"

@@ -25,13 +25,21 @@ export default {
   },
   data () {
     return {
-      chart: null
+      chart: null,
+      food: 0,
+      clothes: 0,
+      medical: 0,
+      entertainment: 0,
+      dotc: 0,
+      dailyNecessities: 0,
+      education: 0,
     }
   },
   mounted () {
-    this.$nextTick(() => {
-      this.initChart()
-    })
+    this.load()
+    // this.$nextTick(() => {
+    //   this.initChart()
+    // })
   },
   beforeDestroy () {
     if (!this.chart) {
@@ -41,6 +49,23 @@ export default {
     this.chart = null
   },
   methods: {
+    load(){
+      this.$axios.get('/finance/expense/'+1).then(resp => {
+        if (resp && resp.data.code === 200) {
+          console.log(resp.data.object)
+          this.food = parseInt(resp.data.object.food)
+          this.clothes = parseInt(resp.data.object.clothes)
+          this.dotc = parseInt(resp.data.object.dotc)
+          this.dailyNecessities = parseInt(resp.data.object.dailyNecessities)
+          this.medical = parseInt(resp.data.object.medical)
+          this.education = parseInt(resp.data.object.education)
+          this.entertainment = parseInt(resp.data.object.entertainment)
+        }
+        this.$nextTick(() => {
+          this.initChart()
+        })
+      })
+    },
     initChart () {
       this.chart = echarts.init(this.$el, 'macarons')
 
@@ -52,21 +77,23 @@ export default {
         legend: {
           left: 'center',
           bottom: '10',
-          data: ['食品', '教育', '娱乐', '通勤', '医药保健']
+          data: ['食品', '教育', '娱乐', '通勤', '医药保健','生活必需品','服装']
         },
         series: [
           {
-            name: 'WEEKLY WRITE ARTICLES',
+            name: '家庭支出一览',
             type: 'pie',
             roseType: 'radius',
             radius: [15, 95],
             center: ['50%', '38%'],
             data: [
-              { value: 320, name: '食品' },
-              { value: 240, name: '教育' },
-              { value: 149, name: '娱乐' },
-              { value: 100, name: '通勤' },
-              { value: 59, name: '医药保健' }
+              { value: this.food, name: '食品' },
+              { value: this.education, name: '教育' },
+              { value: this.entertainment, name: '娱乐' },
+              { value: this.dotc, name: '通勤' },
+              { value: this.medical, name: '医药保健' },
+              { value: this.dailyNecessities, name: '生活必需品' },
+              { value: this.clothes, name: '服装' }
             ],
             animationEasing: 'cubicInOut',
             animationDuration: 2600

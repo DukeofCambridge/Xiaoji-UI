@@ -1,22 +1,13 @@
 <template>
-  <el-table :data="list" style="width: 100%;padding-top: 15px;">
-    <el-table-column label="账单序号" width="130"></el-table-column>
-    <el-table-column label="描述" min-width="200">
-      <template slot-scope="scope">
-        {{ scope.row.order_no | orderNoFilter }}
-      </template>
+  <el-table :data="list" stripe style="width: 100%;padding-top: 15px;">
+    <el-table-column type="index" align="center" label="账单序号" width="120"></el-table-column>
+    <el-table-column label="描述"  prop="name">
     </el-table-column>
-    <el-table-column label="金额" width="195" align="center">
-      <template slot-scope="scope">
-        ¥{{ scope.row.price | toThousandFilter }}
-      </template>
+    <el-table-column label="金额"  align="center" prop="amount">
     </el-table-column>
-    <el-table-column label="日期" width="100" align="center">
-      <template slot-scope="{row}">
-        <el-tag :type="row.status | statusFilter">
-          {{ row.status }}
-        </el-tag>
-      </template>
+    <el-table-column label="日期"  align="center" prop="date" sortable>
+    </el-table-column>
+    <el-table-column label="分类"  align="center" prop="type">
     </el-table-column>
   </el-table>
 </template>
@@ -47,9 +38,12 @@ export default {
   },
   methods: {
     fetchData () {
-      // transactionList().then(response => {
-      //   this.list = response.data.items.slice(0, 8)
-      // })
+      this.$axios.get('/finance/bills/'+1).then(resp => {
+        if (resp && resp.data.code === 200) {
+          console.log(resp.data.object)
+          this.list = resp.data.object
+        }
+      })
     }
   }
 }

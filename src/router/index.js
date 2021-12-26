@@ -10,6 +10,8 @@ import Weather from "@/components/Weather";
 import Control from "@/components/Control";
 import Setting from "@/components/Setting";
 import News from "@/components/News";
+import WeatherToday from "@/components/Weather/WeatherToday";
+import WeatherFuture from "@/components/Weather/WeatherFuture";
 
 Vue.use(VueRouter)
 
@@ -43,7 +45,20 @@ const routes = [
   {
     path:'/weather',
     name:'Weather',
-    component: Weather
+    redirect:'/weather/today',
+    component: Weather,
+    children: [
+      {
+        path: 'today',
+        name: 'WeatherToday',
+        component: WeatherToday
+      },
+      {
+        path: 'future',
+        name: 'WeatherFuture',
+        component: WeatherFuture
+      }
+    ]
   },
   {
     path:'/control',

@@ -9,7 +9,8 @@ export default new Vuex.Store({
   state: {
     // coursename: window.localStorage.getItem('coursename') == null ?　'': JSON.parse(window.localStorage.getItem('coursename'||'[]')),
     // user: window.localStorage.getItem('user') ==null?'':JSON.parse(window.localStorage.getItem('user'||'[]'))
-    uri: window.localStorage.getItem('uri') ==null?'':JSON.parse(window.localStorage.getItem('uri'||'[]'))
+    uri: window.localStorage.getItem('uri') ==null?'':JSON.parse(window.localStorage.getItem('uri'||'[]')),
+    wea: window.localStorage.getItem('wea') ==null?'':JSON.parse(window.localStorage.getItem('wea'||'[]'))
     // adminMenus: []
   },
   mutations: {
@@ -34,6 +35,10 @@ export default new Vuex.Store({
     enterScreen(state, data){
       state.uri = data
       window.localStorage.setItem('uri', JSON.stringify(data))
+    },
+    setWeather(state, data){
+      state.wea = data
+      window.localStorage.setItem('wea', JSON.stringify(data))
     }
   },
   actions: {

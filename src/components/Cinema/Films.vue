@@ -2,7 +2,7 @@
   <div>
     <el-row style="height: 560px;">
       <search-bar @onSearch="searchResult" ref="searchBar"></search-bar>
-      <view-switch class="switch"></view-switch>
+<!--      <view-switch class="switch"></view-switch>-->
       <el-tooltip effect="dark" placement="right" v-for="item in films" :key="item.id" >
 <!--                  v-for="item in films.slice((currentPage-1)*pagesize,currentPage*pagesize)"-->
 
@@ -35,7 +35,7 @@ import ViewSwitch from "@/components/Cinema/ViewSwitch";
 
 export default {
   name: "Films",
-  components: {ViewSwitch, SearchBar},
+  components: {SearchBar},
   data () {
     return {
       films: [],
@@ -49,7 +49,7 @@ export default {
   methods: {
     load() {
       let _this = this
-      this.$axios.get('/video/all').then(resp => {
+      this.$axios.get('/movie/all').then(resp => {
         if (resp && resp.data.code === 200) {
           console.log(resp.data.object)
           _this.films = resp.data.object
@@ -67,7 +67,7 @@ export default {
     searchResult() {
       let _this = this
       this.$axios
-        .get('/video/search?keywords=' + this.$refs.searchBar.keywords, {}).then(resp => {
+        .get('/movie/search?keywords=' + this.$refs.searchBar.keywords, {}).then(resp => {
         if (resp && resp.data.code === 200) {
           _this.films = resp.data.object
         }

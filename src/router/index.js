@@ -14,6 +14,10 @@ import WeatherToday from "@/components/Weather/WeatherToday";
 import WeatherFuture from "@/components/Weather/WeatherFuture";
 import Login from "@/components/Login";
 import FaceLogin from "@/components/FaceLogin";
+import Tiyu from "@/components/AllNews/Tiyu";
+import Yule from "@/components/AllNews/Yule";
+import Keji from "@/components/AllNews/Keji";
+import Youxi from "@/components/AllNews/Youxi";
 
 Vue.use(VueRouter)
 
@@ -86,6 +90,26 @@ const routes = [
     path:'/news',
     name: 'News',
     component: News
+  },
+  {
+    path:'/tiyu',
+    name:'Tiyu',
+    component:Tiyu
+  },
+  {
+    path:'/yule',
+    name:'Yule',
+    component:Yule
+  },
+  {
+    path:'/keji',
+    name:'Keji',
+    component:Keji
+  },
+  {
+    path:'/youxi',
+    name:'Youxi',
+    component:Youxi
   },
   {
     path: '*',

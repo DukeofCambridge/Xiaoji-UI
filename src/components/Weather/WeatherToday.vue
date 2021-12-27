@@ -47,16 +47,16 @@ export default {
     }
   },
   methods:{
-    GetWeatherData:function(){
-      var url = "weather";
+    GetWeatherData(){
+      let url = "/weather/weather/get";
       this.$axios.get(url).then(response => {
         // console.log(response.data.result)
         // console.log(response.data.result.realtime)
         // console.log(response.data.result.future)
         this.realtime = response.data.result.realtime;
-        for(var i=0;i<5;i++)
+        for(let i=0;i<5;i++)
         {
-          var Length = response.data.result.future[i].date.length;
+          let Length = response.data.result.future[i].date.length;
           response.data.result.future[i].date = response.data.result.future[i].date.substring(0,Length-19);
         }
         this.$store.commit('setWeather',response.data.result)
@@ -64,7 +64,7 @@ export default {
       })
     }
   },
-  mounted:function (){
+  mounted(){
     this.GetWeatherData();
     console.log(this.$store.state.wea);
     // Vue.set(this.realtime,'select',this.$store.state.wea.realtime)

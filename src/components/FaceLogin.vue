@@ -37,7 +37,7 @@ export default {
       tracker.setStepSize(2);
       tracker.setEdgesDensity(0.1);
 
-      tracking.track('#video', tracker, { camera: true });
+      tracking.track(video, tracker, { camera: true });
 
       tracker.on('track', function(event) {
         context.clearRect(0, 0, canvas.width, canvas.height);

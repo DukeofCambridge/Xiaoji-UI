@@ -1,29 +1,32 @@
 <template>
+  <body>
   <div>
     <Header></Header>
     <div class="area2">
       <div class="area1">
-        <el-button  @click="$router.push('/yule')">
+        <el-button class="btn-outline-dark" @click="$router.push('/yule')">
           娱乐
         </el-button>
-        <el-button  @click="$router.push('/tiyu')">
+        <el-button class="btn-outline-info" @click="$router.push('/tiyu')">
           体育
         </el-button>
       </div>
       <div class="area1">
-        <el-button  @click="$router.push('/youxi')">
+        <el-button class="btn-outline-primary" @click="$router.push('/youxi')">
           游戏
         </el-button>
-        <el-button  @click="$router.push('/keji')">
+        <el-button class="btn-outline-success" @click="$router.push('/keji')">
           科技
         </el-button>
       </div>
     </div>
   </div>
+  </body>
 </template>
 
 <script>
 import Header from "@/components/Common/Header";
+
 export default {
   name: "News",
   components: {Header}
@@ -31,7 +34,10 @@ export default {
 </script>
 
 <style scoped>
-.el-button{
+body {
+  background-image: url('../assets/img/1.jpeg');
+}
+.el-button {
   height: 100px;
   width: 200px;
   font-family: "Microsoft YaHei";
@@ -40,10 +46,11 @@ export default {
   border-radius: 10%;
   margin-left: 50px;
 }
-.area1{
+.area1 {
   margin-bottom: 20px;
 }
-.area2{
+
+.area2 {
   margin-top: 200px;
   margin-left: 550px;
 }

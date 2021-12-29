@@ -6,6 +6,9 @@ import 'echarts/theme/macarons.js'
 import store from './store'
 
 import './assets/css/global.css'
+import './assets/css/bootstrap.css'
+import './assets/css/bootstrap-reboot.css'
+import './assets/css/bootstrap-grid.css'
 // 设置反向代理，前端请求默认发送到 http://localhost:8085/api
 let axios = require('axios')
 axios.defaults.baseURL = 'http://localhost:8080/'

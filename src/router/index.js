@@ -18,6 +18,7 @@ import Tiyu from "@/components/AllNews/Tiyu";
 import Yule from "@/components/AllNews/Yule";
 import Keji from "@/components/AllNews/Keji";
 import Youxi from "@/components/AllNews/Youxi";
+import Register from "@/components/Register";
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   {
     path:'/face',

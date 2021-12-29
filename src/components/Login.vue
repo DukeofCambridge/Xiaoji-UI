@@ -6,18 +6,18 @@
       <div class="form">
         <div class="item">
           <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-          <input type="text" id="username" placeholder="Username">
+          <input type="text" id="username" placeholder="Username" v-model="form.username">
         </div>
         <div class="item">
           <i class="fa fa-key" aria-hidden="true"></i>
-          <input type="password" id="password" placeholder="Password">
+          <input type="password" id="password" placeholder="Password" v-model="form.password">
         </div>
       </div>
       <button id="login" class="login" @click="login">密 码 解 锁</button>
       <br>
-      <button id="tofaceLogin" class="faceLogin">人 脸 解 锁</button>
+      <button id="tofaceLogin" class="faceLogin" @click="$router.push('/face')">人 脸 解 锁</button>
       <br>
-      <button id="toregister" class="register"> Register</button>
+      <button id="toregister" class="register">账 户 注 册</button>
     </div>
   </body>
 </template>
@@ -25,6 +25,47 @@
 <script>
 export default {
   name: "Login",
+  data(){
+    return{
+      form:{
+        username: '',
+        password: ''
+      }
+    }
+  },
+  methods:{
+    login(){
+      let _this=this
+      if(!this.form.username){
+        this.$message("请输入账号")
+        return;
+      }if(!this.form.password){
+        this.$message("请输入口令，或使用人脸解锁")
+        return;
+      }
+      this.$axios
+        .post('/login', {
+          username: this.form.username,
+          password: this.form.password
+        })
+        .then(resp => {
+          if (resp.data.code === 200) {
+            // 前端也保存用户登录状态
+            console.log(resp.data.object)
+            _this.$store.commit('login', this.form.username)
+            _this.$store.commit('setToken',resp.data.object)
+            // console.log(_this.$store.state.username)
+            // console.log(_this.$store.state.role)
+            _this.$router.push('/home')
+          } else {
+            this.$alert(resp.data.msg, '提示', {
+              confirmButtonText: '确定'
+            })
+          }
+        })
+        .catch(failResponse => {})
+    },
+  }
 
 }
 </script>
@@ -37,7 +78,7 @@ body{
 }
 #login-box{
   width: 30%;
-  height: 300px;
+  height: 360px;
   margin: 10% auto 0;
   border-radius: 40px;
   text-align: center;
@@ -79,9 +120,9 @@ body{
 }
 
 .register{
-  /* margin-top: 15px; */
+   margin-top: 45px;
   float: right;
-  width: 100px;
+  width: 166px;
   height: 30px;
   font-size: 20px;
   /* font-weight: 700; */

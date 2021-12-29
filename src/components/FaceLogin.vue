@@ -3,9 +3,9 @@
   <div style="height: 1px"></div>
   <div id="login-box">
     <h1 class="AIsing">小济智家</h1>
-    <button id="camera" class="camera" @click="openCamera">Open Camera</button>
-    <br>
-    <button id="faceLogin" class="faceLogin" @click="faceLogin">Face Login</button>
+<!--    <button id="camera" class="camera" @click="openCamera">打开摄像头</button>-->
+<!--    <br>-->
+    <button id="faceLogin" class="faceLogin" @click="faceLogin">人 脸 识 别</button>
     <br>
 
     <div class="media">
@@ -17,8 +17,75 @@
 </template>
 
 <script>
+require('tracking/build/tracking-min.js')
+require('tracking/build/data/face-min.js')
+// require('tracking/build/dat.gui.min.js')
+// require('tracking/examples/assets/stats.min.js')
 export default {
-  name: "FaceLogin"
+  name: "FaceLogin",
+  mounted() {
+    this.openCamera()
+  },
+  methods:{
+    openCamera(){
+      let video = document.getElementById("video");
+      let canvas = document.getElementById("canvas");
+      let context = canvas.getContext('2d');
+
+      let tracker = new tracking.ObjectTracker('face');
+      tracker.setInitialScale(4);
+      tracker.setStepSize(2);
+      tracker.setEdgesDensity(0.1);
+
+      tracking.track('#video', tracker, { camera: true });
+
+      tracker.on('track', function(event) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        event.data.forEach(function(rect) {
+          context.strokeStyle = '#a64ceb';
+          context.strokeRect(rect.x - 7, rect.y - 20, rect.width + 10, rect.height + 25);
+          context.font = '11px Helvetica';
+          context.fillStyle = "#fff";
+          context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y - 10);
+          context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y);
+        });
+      });
+
+    },
+    faceLogin(){
+      let video = document.getElementById("video");
+      let canvas = document.getElementById("canvas");
+      let userContext = canvas.getContext("2d");
+      userContext.drawImage(video, 0, 0, canvas.width, canvas.height);
+      // let userImgSrc = canvas.toDataURL("image/png"); // 截取第一帧
+      let userImgSrc = canvas.toDataURL("image/png"); // 截取第一帧
+      //拿到bash64格式的照片信息: 去除标签 --- data:image/png;base64,
+      let faceBase = userImgSrc.split(",")[1];
+      // alert(faceBase);
+
+      let formdata = new FormData();
+      formdata.append("faceBase64", "" + faceBase);
+
+      let requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+      };
+
+      fetch("http://localhost:8080/faceLogin", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+          // alert(result);
+          console.log(result);
+          if (result == "SUCCESS") {
+            window.location.href = "http://127.0.0.1:5503/AIsingFont/src/home.html"
+          }
+        })
+        .catch(error => console.log('error', error));
+    }
+  },
+
 }
 </script>
 
@@ -31,8 +98,8 @@ body {
 
 #login-box {
   width: 30%;
-  height: 400px;
-  margin: 10% auto 0;
+  height: 450px;
+  margin: 8% auto 0;
   border-radius: 40px;
   text-align: center;
   background: #00000060;
@@ -66,6 +133,7 @@ body {
 .camera,
 .faceLogin {
   margin-top: 10px;
+  margin-bottom: 40px;
   /* vertical-align: auto; */
   width: 166px;
   height: 30px;

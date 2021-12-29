@@ -15,6 +15,29 @@ axios.defaults.baseURL = 'http://localhost:8080/'
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
+/*路由守卫   根据登录获得token*/
+// router.beforeEach((to,from,next) =>{
+//   const isLogin = !!localStorage.token ;
+//   if(to.path ==="/login" || to.path ==="/register"){
+//     next();
+//   }else{
+//     isLogin ? next() :next("/login")
+//   }
+// })
+
+// http response 拦截器
+// axios.interceptors.response.use(
+//   response => {
+//     return response
+//   },
+//   error => {
+//     if (error) {
+//       store.commit('logout')
+//       router.replace('/login')
+//     }
+//     // 返回接口返回的错误信息
+//     return Promise.reject(error)
+//   })
 
 new Vue({
   router,

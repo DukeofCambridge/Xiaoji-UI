@@ -17,7 +17,7 @@
       <br>
       <button id="tofaceLogin" class="faceLogin" @click="$router.push('/face')">人 脸 解 锁</button>
       <br>
-      <button id="toregister" class="register">账 户 注 册</button>
+      <button id="toregister" class="register" @click="$router.push('/register')">账 户 注 册</button>
     </div>
   </body>
 </template>
@@ -44,16 +44,13 @@ export default {
         return;
       }
       this.$axios
-        .post('/login', {
-          username: this.form.username,
-          password: this.form.password
-        })
+        .post('/authface/user/login?name='+this.form.username+'&password='+this.form.password)
         .then(resp => {
           if (resp.data.code === 200) {
             // 前端也保存用户登录状态
             console.log(resp.data.object)
-            _this.$store.commit('login', this.form.username)
-            _this.$store.commit('setToken',resp.data.object)
+            _this.$store.commit('login', resp.data.object.id)
+            // _this.$store.commit('setToken',resp.data.object)
             // console.log(_this.$store.state.username)
             // console.log(_this.$store.state.role)
             _this.$router.push('/home')

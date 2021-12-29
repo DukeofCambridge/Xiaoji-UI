@@ -45,20 +45,20 @@
       </div>
 
       <div class="apple-style-gallery">
-        <div class="card">
-          <div class="image">
-            <img src="https://picsum.photos/360/460?random=1" alt="avatar"/>
-          </div>
-          <div class="content">
-            <div class="title">Art of Hover Card</div>
-            <div class="sub-title">Sub Title</div>
-            <div class="bottom">
-              <p>I am a long paragraphy. I am a long paragraphy. I am a long paragraphy. I am a long paragraphy. I am a
-                long paragraphy. I am a long paragraphy.</p>
-              <button>Read More</button>
-            </div>
-          </div>
-        </div>
+<!--        <div class="card">-->
+<!--          <div class="image">-->
+<!--            <img src="https://picsum.photos/360/460?random=1" alt="avatar"/>-->
+<!--          </div>-->
+<!--          <div class="content">-->
+<!--            <div class="title">Art of Hover Card</div>-->
+<!--            <div class="sub-title">Sub Title</div>-->
+<!--            <div class="bottom">-->
+<!--              <p>I am a long paragraphy. I am a long paragraphy. I am a long paragraphy. I am a long paragraphy. I am a-->
+<!--                long paragraphy. I am a long paragraphy.</p>-->
+<!--              <button>Read More</button>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
       </div>
     </div>
 
@@ -117,16 +117,16 @@ window.onload = function(){
     });
   }
 
-  $('.card').hover(function () {
-    if ($(this).hasClass("active")) {
-      $('.card .bottom').slideUp(function () {
-        $('.card').removeClass("active");
-      });
-    } else {
-      $('.card').addClass("active");
-      $('.card .bottom').stop().slideDown();
-    }
-  });
+  // $('.card').hover(function () {
+  //   if ($(this).hasClass("active")) {
+  //     $('.card .bottom').slideUp(function () {
+  //       $('.card').removeClass("active");
+  //     });
+  //   } else {
+  //     $('.card').addClass("active");
+  //     $('.card .bottom').stop().slideDown();
+  //   }
+  // });
 };
 export default {
   name: "Home",

@@ -63,24 +63,6 @@ export default {
         this.$message("昵称不能为空")
         return;
       }
-      this.$axios
-        .post('/authface/register', {
-          username: this.form.username,
-          password: this.form.password
-        })
-        .then(resp => {
-          if (resp.data.code === 200) {
-            // 前端也保存用户登录状态
-            console.log("注册成功！")
-
-            _this.$router.push('/login')
-          } else {
-            this.$alert(resp.data.msg, '提示', {
-              confirmButtonText: '确定'
-            })
-          }
-        })
-        .catch(failResponse => {})
 
       let video = document.getElementById("video");
       let canvas = document.getElementById("canvas");
@@ -94,11 +76,7 @@ export default {
 
 
       this.$axios
-        .post('/authFace/register', {
-          username: this.form.username,
-          password: this.form.password,
-          faceBase: faceBase
-        })
+        .post('/authface/user/sregister?account='+this.form.username+'&nickname='+this.form.nickname+'&password='+this.form.password)
         .then(resp => {
           if (resp.data.code === 200) {
             // 前端也保存用户登录状态
@@ -114,7 +92,6 @@ export default {
 
     },
     openCamera(){
-      document.getElementById("camera").onclick = function() {
         let video = document.getElementById("video");
         let canvas = document.getElementById("canvas");
         // alert("open camera!");
@@ -138,7 +115,6 @@ export default {
             context.fillText('y: ' + rect.y + 'px', rect.x + rect.width - 16, rect.y - 60);
           });
         });
-      }
     },
   }
 }

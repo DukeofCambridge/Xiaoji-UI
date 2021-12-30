@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     fetchData () {
-      this.$axios.get('/finance/bills/'+1).then(resp => {
+      this.$axios.get('/finance/finance/bills/'+1).then(resp => {
         if (resp && resp.data.code === 200) {
           console.log(resp.data.object)
           this.list = resp.data.object

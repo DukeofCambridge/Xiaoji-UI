@@ -49,7 +49,7 @@ export default {
   methods: {
     load() {
       let _this = this
-      this.$axios.get('/movie/all').then(resp => {
+      this.$axios.get('/movie/movie/all').then(resp => {
         if (resp && resp.data.code === 200) {
           console.log(resp.data.object)
           _this.films = resp.data.object
@@ -67,7 +67,7 @@ export default {
     searchResult() {
       let _this = this
       this.$axios
-        .get('/movie/search?keywords=' + this.$refs.searchBar.keywords, {}).then(resp => {
+        .get('/movie/movie/search?keywords=' + this.$refs.searchBar.keywords, {}).then(resp => {
         if (resp && resp.data.code === 200) {
           _this.films = resp.data.object
         }

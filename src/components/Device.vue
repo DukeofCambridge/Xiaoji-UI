@@ -126,7 +126,7 @@
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row> -->
 
-    <el-table v-loading="loading" :data="statusList" @selection-change="handleSelectionChange">
+    <el-table :data="statusList" @selection-change="handleSelectionChange">
       <!-- <el-table-column type="selection" width="55" align="center" /> -->
       <el-table-column label="序号" align="center" prop="deviceStatusId" />
       <el-table-column label="设备ID" align="center" prop="deviceId" />
@@ -167,13 +167,13 @@
       <!--      </el-table-column>-->
     </el-table>
 
-    <pagination
-      v-show="total>0"
-      :total="total"
-      :page.sync="queryParams.pageNum"
-      :limit.sync="queryParams.pageSize"
-      @pagination="getList"
-    />
+<!--    <pagination-->
+<!--      v-show="total>0"-->
+<!--      :total="total"-->
+<!--      :page.sync="queryParams.pageNum"-->
+<!--      :limit.sync="queryParams.pageSize"-->
+<!--      @pagination="getList"-->
+<!--    />-->
 
     <!-- 添加或修改设备状态对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
@@ -279,16 +279,18 @@
 <script>
 import { listStatus, getStatus, delStatus, addStatus, updateStatus, exportStatus } from "@/api/iot/status";
 import Header from "@/components/Common/Header";
+import Pagination from "@/components/Pagination";
 
 export default {
   name: "Device",
   components: {
+    // Pagination,
     Header
   },
   data() {
     return {
       // 遮罩层
-      loading: true,
+      // loading: true,
       // 选中数组
       ids: [],
       // 非单个禁用
@@ -337,8 +339,8 @@ export default {
       daterangeCreateTime: [],
       // 查询参数
       queryParams: {
-        pageNum: 1,
-        pageSize: 10,
+        // pageNum: 1,
+        // pageSize: 10,
         deviceId: null,
         deviceNum: null,
         relayStatus: null,
@@ -369,16 +371,22 @@ export default {
   methods: {
     /** 查询设备状态列表 */
     getList() {
-      this.loading = true;
+      // this.loading = true;
       this.queryParams.params = {};
-      if (null != this.daterangeCreateTime && '' !== this.daterangeCreateTime) {
-        this.queryParams.params["beginCreateTime"] = this.daterangeCreateTime[0];
-        this.queryParams.params["endCreateTime"] = this.daterangeCreateTime[1];
-      }
+      // if (null != this.daterangeCreateTime && '' !== this.daterangeCreateTime) {
+      //   this.queryParams.params["beginCreateTime"] = this.daterangeCreateTime[0];
+      //   this.queryParams.params["endCreateTime"] = this.daterangeCreateTime[1];
+      // }
+      // this.$axios.get("/device/status/list").then(res=>{
+      //   console.log(res)
+      //   this.statusList = res.data.rows;
+      //   this.total = res.data.total;
+      // })
       listStatus(this.queryParams).then(response => {
-        this.statusList = response.rows;
-        this.total = response.total;
-        this.loading = false;
+        console.log(response)
+        this.statusList = response.data.rows;
+        this.total = response.data.total;
+        // this.loading = false;
       });
     },
 

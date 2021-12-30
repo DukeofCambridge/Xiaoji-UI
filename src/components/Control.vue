@@ -2,7 +2,7 @@
   <div class="dashboard-editor-container">
     <Header></Header>
     <el-container>
-      <el-aside>
+
         <el-card class="card1">
           <img class="image" src="../assets/img/air.webp"/>
           <span><strong>温度</strong></span>
@@ -24,8 +24,7 @@
             <span class="demonstration"><strong>光强</strong></span>
           </div>
         </el-card>
-      </el-aside>
-      <el-main>
+
         <ul class="screen">
           <li class="l1">
             <span>当前房间温度为：{{temperature}}</span>
@@ -37,7 +36,7 @@
             <span>光强为:{{lightIntensity}}</span>
           </li>
         </ul>
-      </el-main>
+
     </el-container>
   </div>
 </template>
@@ -59,7 +58,7 @@ export default {
     changeTemp(callback){
       console.log(callback);
       const self = this;
-      this.$axios.put('http://localhost:8085/temperature/1?temperature='+callback)
+      this.$axios.put('/weather/temperature/1?temperature='+callback)
         .then(function (response) {
           console.log(response)
         })
@@ -76,7 +75,7 @@ export default {
     },
     changeLightIntensity(callback){
       console.log(callback)
-      this.$axios.put('http://localhost:8085/cd/1?cd='+callback)
+      this.$axios.put('/weather/cd/1?cd='+callback)
         .then(function (response) {
           console.log(response)
         })
@@ -87,7 +86,7 @@ export default {
   },
   mounted() {
     const self = this;
-    this.$axios.get('http://localhost:8085/autochange', {
+    this.$axios.get('/weather/autochange', {
     })
       .then(function (response) {
         console.log(response.data[1]);
@@ -105,11 +104,15 @@ export default {
 
 <style scoped>
 .dashboard-editor-container {
-  height:100vh;
-  width:100%;
-  background-size:100% 100%;
-  background: url("../assets/img/home.webp") no-repeat 100% 100%;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/img/home.webp");
   overflow: hidden;
+  /*background-size: 100% 100%;*/
+  /*padding: 32px;*/
+  background-color: #f6f6f6;
+  /*position: relative;*/
+  /*margin: -20px 0 0 -10px;*/
 }
 .el-container{
   width: 100%;
@@ -164,15 +167,16 @@ export default {
   display: flex;
   opacity: 0.9;
   height: 350px;
-  margin-top: 60px;
-  margin-left: 50px;
+  margin-top: 80px;
+  margin-left: 30px;
 }
 .card2{
   display: flex;
   opacity: 0.9;
   height: 350px;
-  margin-top: 20px;
+  margin-top: 80px;
   margin-left: 50px;
+  margin-right: 50px;
 }
 
 .image{

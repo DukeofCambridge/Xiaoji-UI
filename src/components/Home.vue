@@ -26,7 +26,7 @@
           <div class="gallery-frame icon" style="grid-area: icon;background: #ffffff">
             <div><img src="../assets/img/小济智家.png" alt="logo" draggable="false"/></div>
           </div>
-          <div class="gallery-frame left-bottom-1" style="grid-area: left-bottom-1;zoom: 118%" @click="$router.push('/device')">
+          <div class="gallery-frame left-bottom-1" style="grid-area: left-bottom-1;zoom: 118%" @click="$router.push('/control')">
             <div><img src="../assets/img/lights.png" alt="灯光" draggable="false"/></div>
             <div><img src="../assets/img/air.webp" alt="温度" draggable="false"/></div>
           </div>

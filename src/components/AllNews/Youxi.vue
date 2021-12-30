@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     GetNews: function () {
-      var url = "http://127.0.0.1:8082/requestUrl/type/youxi";
+      var url = "/news/news/type/youxi";
       this.$axios.get(url).then(response => {
         console.log(response.data.result.data);
         this.list = response.data.result.data;

@@ -24,8 +24,8 @@ export default new Vuex.Store({
       // 注意不能用 null 清除，否则将无法判断 user 里具体的内容
       state.user = []
       window.localStorage.removeItem('user')
-      state.token = []
-      window.localStorage.removeItem('token')
+      // state.token = []
+      // window.localStorage.removeItem('token')
     },
     enterScreen(state, data){
       state.uri = data

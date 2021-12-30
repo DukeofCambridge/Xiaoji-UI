@@ -1,6 +1,7 @@
 <template>
   <div class = "message">
-    <img src="../assets/img/JiadingCampus.png"  alt="404 NOT FOUND" />
+<!--    <img src="../assets/img/JiadingCampus.png"  alt="404 NOT FOUND" />-->
+    <div class="text">404 NOT FOUND</div>
   </div>
 </template>
 
@@ -12,9 +13,16 @@ export default {
 
 <style scoped>
 .message {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+  background: url("../assets/img/JiadingCampus.png") no-repeat center center fixed;
+  width:100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.text{
+  margin:0 auto;
+  font-size: 100px;
+  color: #36a3f7;
 }
 </style>

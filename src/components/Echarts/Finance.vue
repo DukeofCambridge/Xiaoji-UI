@@ -19,11 +19,11 @@
           <pie-chart />
         </div>
       </el-col>
-      <el-col :xs="24" :sm="24" :lg="8">
-        <div class="chart-wrapper">
-          <bar-chart />
-        </div>
-      </el-col>
+<!--      <el-col :xs="24" :sm="24" :lg="8">-->
+<!--        <div class="chart-wrapper">-->
+<!--          <bar-chart />-->
+<!--        </div>-->
+<!--      </el-col>-->
     </el-row>
 
     <el-row :gutter="8">
@@ -46,7 +46,7 @@ import PanelGroup from './PanelGroup'
 import RaddarChart from './RaddarChart'
 import PieChart from './PieChart'
 import LineChart from './LineChart'
-import BarChart from './BarChart'
+// import BarChart from './BarChart'
 import TransactionTable from './TransactionTable'
 import TodoList from './TodoList'
 import BoxCard from './BoxCard'
@@ -79,7 +79,7 @@ export default {
     RaddarChart,
     LineChart,
     PieChart,
-    BarChart,
+    // BarChart,
     TransactionTable,
     TodoList,
     BoxCard,

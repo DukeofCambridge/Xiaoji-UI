@@ -6,16 +6,23 @@ import 'echarts/theme/macarons.js'
 import store from './store'
 
 import './assets/css/global.css'
-import './assets/css/bootstrap.css'
-import './assets/css/bootstrap-reboot.css'
-import './assets/css/bootstrap-grid.css'
+import { getDicts } from "@/api/system/dict/data";
+import { parseTime, resetForm, addDateRange, selectDictLabel, selectDictLabels, handleTree } from "@/utils/ruoyi";
+
 // 设置反向代理，前端请求默认发送到 http://localhost:8085/api
 let axios = require('axios')
 axios.defaults.baseURL = 'http://localhost:8080/'
 // 前端请求带上cookie信息
 // axios.defaults.withCredentials = true
-// 全局注册，之后可在其他组件中通过 this.$axios 发送数据
+// 全局方法挂载
 Vue.prototype.$axios = axios
+Vue.prototype.getDicts = getDicts
+Vue.prototype.parseTime = parseTime
+Vue.prototype.resetForm = resetForm
+Vue.prototype.addDateRange = addDateRange
+Vue.prototype.selectDictLabel = selectDictLabel
+Vue.prototype.selectDictLabels = selectDictLabels
+Vue.prototype.handleTree = handleTree
 Vue.config.productionTip = false
 
 /*路由守卫   根据登录获得token*/

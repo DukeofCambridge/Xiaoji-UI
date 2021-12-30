@@ -90,10 +90,10 @@ export default {
           }
         },
         legend: {
-          data: ['预期', '实际']
+          data: ['预期消费', '实际消费']
         },
         series: [{
-          name: '预期',
+          name: '预期消费',
           itemStyle: {
             normal: {
               color: '#FF005A',
@@ -110,7 +110,7 @@ export default {
           animationEasing: 'cubicInOut'
         },
         {
-          name: '实际',
+          name: '实际消费',
           smooth: true,
           type: 'line',
           itemStyle: {

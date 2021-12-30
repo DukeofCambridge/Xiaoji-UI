@@ -19,6 +19,8 @@ import Yule from "@/components/AllNews/Yule";
 import Keji from "@/components/AllNews/Keji";
 import Youxi from "@/components/AllNews/Youxi";
 import Register from "@/components/Register";
+import Device from "@/components/Device";
+import music from "@/components/music";
 
 Vue.use(VueRouter)
 
@@ -88,6 +90,11 @@ const routes = [
     component: Control
   },
   {
+    path:'/device',
+    name: 'Device',
+    component: Device
+  },
+  {
     path: '/setting',
     name:'Setting',
     component: Setting
@@ -121,6 +128,11 @@ const routes = [
     path: '*',
     name: 'Error',
     component: Error
+  },
+  {
+    path: '/music',
+    name: 'Music',
+    component: music
   }
 ]
 

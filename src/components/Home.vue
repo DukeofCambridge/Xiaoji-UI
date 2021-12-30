@@ -1,70 +1,110 @@
 <template>
-  <div class="GalleryGroup">
-    <div class="gallery-container">
-      <div class="apple-style-gallery">
-        <div class="gallery-frame left-top" style="grid-area: left-top;">
-          <img src="../assets/img/beauty.jpg" alt="化妆" draggable="false" @click="$router.push('/makeup')"/>
+  <div>
+    <div class="GalleryGroup">
+      <div class="gallery-container">
+        <div class="apple-style-gallery">
+          <div class="gallery-frame left-top" style="grid-area: left-top;">
+            <img src="../assets/img/beauty.jpg" alt="化妆" draggable="false" @click="$router.push('/makeup')"/>
+          </div>
+          <div class="gallery-frame" style="grid-area: top-1">
+            <img src="../assets/img/bills.jpg" alt="账单" draggable="false" @click="$router.push('/finance')"/>
+          </div>
+          <div class="gallery-frame" style="grid-area: top-2;border-radius: 35px">
+            <img src="../assets/img/weather.jpg" alt="天气" draggable="false" @click="$router.push('/weather')" />
+          </div>
+          <div class="gallery-frame right-top" style="grid-area: right-top;" @click="$router.push('/cinema')">
+            <div><img src="../assets/img/movie.jpeg" alt="电影" draggable="false"/></div>
+            <div><img src="../assets/img/movie2.png" alt="电影" draggable="false"/></div>
+          </div>
+          <div class="gallery-frame text" style="grid-area: text;">
+            <div><label>做最懂你的家居系统</label></div>
+            <div><label>we know you as we know ourselves </label></div>
+          </div>
+          <div class="gallery-frame center-topic" style="grid-area: center-topic;">
+            <h1>小济智家</h1>
+          </div>
+          <div class="gallery-frame icon" style="grid-area: icon;background: #ffffff">
+            <div><img src="../assets/img/小济智家.png" alt="logo" draggable="false"/></div>
+          </div>
+          <div class="gallery-frame left-bottom-1" style="grid-area: left-bottom-1;zoom: 118%" @click="$router.push('/device')">
+            <div><img src="../assets/img/lights.png" alt="灯光" draggable="false"/></div>
+            <div><img src="../assets/img/air.webp" alt="温度" draggable="false"/></div>
+          </div>
+          <div class="gallery-frame" style="grid-area: left-bottom-2;">
+            <img src="../assets/img/setting.jpg" alt="设置" draggable="false" @click="$router.push('/setting')"/>
+          </div>
+          <div class="gallery-frame left-bottom-3" style="grid-area: left-bottom-3;" @click="$router.push('/monitor')">
+            <div><img src="../assets/img/berry.png" alt="树莓派远程监控" draggable="false"/></div>
+            <div><p>树莓派远程监控</p></div>
+          </div>
+          <div class="gallery-frame" style="grid-area: bottom;">
+            <img src="../assets/img/music.png" alt="音乐" draggable="false" @click="$router.push('/music')"/>
+          </div>
+          <div class="gallery-frame" style="grid-area: right-bottom;">
+            <img src="../assets/img/news.jpeg" alt="新闻" draggable="false" @click="$router.push('/news')"/>
+          </div>
         </div>
-        <div class="gallery-frame" style="grid-area: top-1">
-          <img src="../assets/img/bills.jpg" alt="账单" draggable="false" @click="$router.push('/finance')"/>
-        </div>
-        <div class="gallery-frame" style="grid-area: top-2;border-radius: 35px">
-          <img src="../assets/img/weather.jpg" alt="天气" draggable="false" @click="$router.push('/weather')" />
-        </div>
-        <div class="gallery-frame right-top" style="grid-area: right-top;" @click="$router.push('/cinema')">
-          <div><img src="../assets/img/movie.jpeg" alt="电影" draggable="false"/></div>
-          <div><img src="../assets/img/movie2.png" alt="电影" draggable="false"/></div>
-        </div>
-        <div class="gallery-frame text" style="grid-area: text;">
-          <div><label>做最懂你的家居系统</label></div>
-          <div><label>we know you as we know ourselves </label></div>
-        </div>
-        <div class="gallery-frame center-topic" style="grid-area: center-topic;">
-          <h1>小济智家</h1>
-        </div>
-        <div class="gallery-frame icon" style="grid-area: icon;background: #ffffff">
-          <div><img src="../assets/img/小济智家.png" alt="logo" draggable="false"/></div>
-        </div>
-        <div class="gallery-frame left-bottom-1" style="grid-area: left-bottom-1;zoom: 118%" @click="$router.push('/control')">
-          <div><img src="../assets/img/lights.png" alt="灯光" draggable="false"/></div>
-          <div><img src="../assets/img/air.webp" alt="温度" draggable="false"/></div>
-        </div>
-        <div class="gallery-frame" style="grid-area: left-bottom-2;">
-          <img src="../assets/img/setting.jpg" alt="设置" draggable="false" @click="$router.push('/setting')"/>
-        </div>
-        <div class="gallery-frame left-bottom-3" style="grid-area: left-bottom-3;" @click="$router.push('/monitor')">
-          <div><img src="../assets/img/berry.png" alt="树莓派远程监控" draggable="false"/></div>
-          <div><p>树莓派远程监控</p></div>
-        </div>
-        <div class="gallery-frame" style="grid-area: bottom;">
-          <img src="../assets/img/music.png" alt="音乐" draggable="false" @click="$router.push('/music')"/>
-        </div>
-        <div class="gallery-frame" style="grid-area: right-bottom;">
-          <img src="../assets/img/news.jpeg" alt="新闻" draggable="false" @click="$router.push('/news')"/>
+
+        <div class="apple-style-gallery">
+          <div class="gallery-frame left-top" style="grid-area: left-top;" @click="show1">
+            <img title="工作模式" src="https://consumer.huawei.com/content/dam/huawei-cbg-site/greate-china/cn/mkt/wholehome/intelligent-scenes/imgs/kv/huawei-whole-home-intelligent-scenes@2x.webp"  draggable="false"/>
+          </div>
+          <div class="gallery-frame" style="grid-area: top-1">
+            <h1 style="writing-mode: vertical-lr; font-size: 50px; background: linear-gradient(to right,#5EFCE8, #736EFE);
+          -webkit-background-clip: text;
+          color: transparent;
+          margin-top: 5px;">工作模式</h1>
+            <!--          <img src="../assets/img/bills.jpg" alt="账单" draggable="false" @click="$router.push('/finance')"/>-->
+          </div>
+          <div class="gallery-frame" style="grid-area: top-2;border-radius: 35px">
+            <h1 style="font-size: 50px; margin-top: 25px;background: linear-gradient(to right, #FFD26F, #3677FF);
+        -webkit-background-clip: text;
+        color: transparent;">观影模式</h1>
+            <h1 style="font-size: 30px; background: linear-gradient(to right, #FFD26F, #3677FF);
+        -webkit-background-clip: text;
+        color: transparent;margin-top: 5px;">&nbsp;&nbsp;足不出户<br>享受视听盛宴</h1>
+            <!--          <img src="../assets/img/weather.jpg" alt="天气" draggable="false" @click="$router.push('/weather')" />-->
+          </div>
+          <div class="gallery-frame right-top" style="grid-area: right-top;">
+            <div><img src="../assets/img/Theater.png" alt="电影" draggable="false" @click="show2"/></div>
+            <div><img src="../assets/img/movie1.jpg" alt="电影" draggable="false" @click="show2"/></div>
+          </div>
+          <div class="gallery-frame text" style="grid-area: text;">
+            <div><label>做最懂你的家居系统</label></div>
+            <div><label>we know you as we know ourselves </label></div>
+          </div>
+          <div class="gallery-frame center-topic" style="grid-area: center-topic;">
+            <h1>情景模式</h1>
+          </div>
+          <div class="gallery-frame icon" style="grid-area: icon;background: #ffffff">
+            <div><img src="../assets/img/小济智家.png" alt="logo" draggable="false"/></div>
+          </div>
+          <div class="gallery-frame left-bottom-1" style="grid-area: left-bottom-1;zoom: 118%">
+            <div style="margin-top: 20px;"><img src="../assets/img/roses.jpg" alt="灯光" draggable="false"/></div>
+            <!--          <div><img src="../assets/img/air.webp" alt="温度" draggable="false"/></div>-->
+          </div>
+          <div class="gallery-frame" style="grid-area: left-bottom-2;">
+            <!--          <img src="../assets/img/setting.jpg" alt="" draggable="false"/>-->
+          </div>
+          <div class="gallery-frame left-bottom-3" style="grid-area: left-bottom-3;" @click="show3">
+            <div><img src="../assets/img/romantic.jpeg" draggable="false"/></div>
+            <div><p>浪漫模式</p></div>
+          </div>
+          <div class="gallery-frame" style="grid-area: bottom;" @click="show4">
+            <img title="音乐模式" src="../assets/img/musiccc.jpg" alt="音乐" draggable="false"/>
+          </div>
+          <div class="gallery-frame" style="grid-area: right-bottom;" @click="show5">
+            <img title="节日模式" src="../assets/img/Victoria-Harbour.jpg"  draggable="false"/>
+          </div>
         </div>
       </div>
 
-      <div class="apple-style-gallery">
-<!--        <div class="card">-->
-<!--          <div class="image">-->
-<!--            <img src="https://picsum.photos/360/460?random=1" alt="avatar"/>-->
-<!--          </div>-->
-<!--          <div class="content">-->
-<!--            <div class="title">Art of Hover Card</div>-->
-<!--            <div class="sub-title">Sub Title</div>-->
-<!--            <div class="bottom">-->
-<!--              <p>I am a long paragraphy. I am a long paragraphy. I am a long paragraphy. I am a long paragraphy. I am a-->
-<!--                long paragraphy. I am a long paragraphy.</p>-->
-<!--              <button>Read More</button>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-      </div>
+      <!--        <div class="card" v-show="isShow">您已进入{{ mode}}模式</div>-->
+
+      <div id="gallery-left-arrow" class="arrow left">&lt;</div>
+      <div id="gallery-right-arrow" class="arrow right">&gt;</div>
     </div>
 
-
-    <div id="gallery-left-arrow" class="arrow left">&lt;</div>
-    <div id="gallery-right-arrow" class="arrow right">&gt;</div>
   </div>
 </template>
 
@@ -81,7 +121,7 @@ window.onload = function(){
   let outterPadding = 80, innerPadding=10;
   document.getElementById("gallery-right-arrow").addEventListener("click", ()=>{
     rate += 1;
-    if(rate === counter){
+    if(rate == counter){
       rate = counter - 1;
       noMoreCallBack("gallery-right-arrow");
     }
@@ -116,29 +156,40 @@ window.onload = function(){
       gallery.style.transform = "translateX(calc("+ rate*-100 +"% - " + (outterPadding*2*rate - innerPadding*2*rate - outterPadding)+ "px))";
     });
   }
-
-  // $('.card').hover(function () {
-  //   if ($(this).hasClass("active")) {
-  //     $('.card .bottom').slideUp(function () {
-  //       $('.card').removeClass("active");
-  //     });
-  //   } else {
-  //     $('.card').addClass("active");
-  //     $('.card .bottom').stop().slideDown();
-  //   }
-  // });
 };
 export default {
   name: "Home",
+  data(){
+    return{}
+  },
+  methods:{
+    show1(){
+      this.$message("您已进入工作模式")
+    },
+    show2(){
+      this.$message("您已进入观影模式")
+    },
+    show3(){
+      this.$message("您已进入浪漫模式")
+    },
+    show4(){
+      this.$message("您已进入音乐模式")
+    },
+    show5(){
+      this.$message("您已进入节日模式")
+    },
+  }
 }
 </script>
 
 <style scoped>
 .GalleryGroup{
-  background-image: url("../assets/img/bg2.jpg");
+  width:100%;
+  height: 100vh;
+  background: url("../assets/img/bg2.jpg")no-repeat;
   background-size: 100% 100%;
-
 }
+
 .gallery-container {
   --gallery-width-block: 8;
   --gallery-height-block: 10;
@@ -359,8 +410,7 @@ export default {
   border-radius: 15px;
 }
 .left-bottom-3 div p {
-  margin: 0;
-  margin-bottom: 10px;
+  margin: 0 0 10px;
 }
 
 
@@ -432,87 +482,5 @@ export default {
   100% {
     background: rgba(0, 0, 0, 0.2);
   }
-}
-
-.card {
-  position: relative;
-  height: 470px;
-  width: 340px;
-  display: block;
-  background-color: white;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
-  transition: 0.4s linear;
-}
-
-.card:hover {
-  box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
-}
-
-.card .image {
-  background-color: black;
-  height: 400px;
-  overflow: hidden;
-}
-
-.image img {
-  height: 100%;
-  width: 100%;
-  transition: 0.3s linear;
-}
-
-.card:active .image img {
-  opacity: 0.6;
-  transform: scale(1.1);
-}
-
-
-.card .content {
-  position: absolute;
-  bottom: 0;
-  background-color: white;
-  width: 100%;
-  text-align: center;
-  padding: 20px 30px;
-}
-
-.content .title {
-  font-size: 24px;
-  font-weight: 600;
-  color: #333333;
-}
-
-.content .sub-title {
-  font-size: 18px;
-  font-weight: 500;
-  color: #e74c3c;
-  margin-bottom: 10px;
-}
-
-.bottom p {
-  color: #666666;
-  font-size: 16px;
-  text-align: justify;
-  line-height: 1.8em;
-}
-
-.bottom button {
-  float: left;
-  padding: 7px 15px;
-  font-size: 17px;
-  background-color: #e74c3c;
-  color: white;
-  font-weight: 500;
-  border: none;
-  margin: 10px 0;
-  transition: 0.3s ease;
-}
-
-.bottom button:hover {
-  transform: scale(0.9);
-  background-color: #e64533;
-}
-
-.bottom {
-  display: none;
 }
 </style>

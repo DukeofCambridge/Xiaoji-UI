@@ -15,15 +15,14 @@ export default {
     logout () {
       let _this = this
       this.$confirm("确定退出登录吗？").then(()=>{
-        this.$axios.get('/logout').then(resp => {
-          if (resp && resp.data.code === 200) {
-            _this.$store.commit('logout')
-            _this.$router.push('/login')
-            // 清空路由，防止路由重复加载
-            // const newRouter = createRouter()
-            // _this.$router.matcher = newRouter.matcher
-          }
-        }).catch(failResponse => {})
+        // this.$axios.get('/logout').then(resp => {
+        //   if (resp && resp.data.code === 200) {
+        //     _this.$store.commit('logout')
+        //     _this.$router.push('/login')
+        //   }
+        // }).catch(failResponse => {})
+        _this.$store.commit('logout')
+        _this.$router.push('/login')
       })
 
     }

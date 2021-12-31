@@ -26,14 +26,14 @@ Vue.prototype.handleTree = handleTree
 Vue.config.productionTip = false
 
 /*路由守卫   根据登录获得token*/
-// router.beforeEach((to,from,next) =>{
-//   const isLogin = !!localStorage.token ;
-//   if(to.path ==="/login" || to.path ==="/register"){
-//     next();
-//   }else{
-//     isLogin ? next() :next("/login")
-//   }
-// })
+router.beforeEach((to,from,next) =>{
+  const isLogin = !!localStorage.user ;
+  if(to.path ==="/login" || to.path ==="/register" || to.path ==="/face"){
+    next();
+  }else{
+    isLogin ? next() :next("/login")
+  }
+})
 
 // http response 拦截器
 // axios.interceptors.response.use(

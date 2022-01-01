@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     load(){
-      this.$axios.get('/finance/finance/expense/'+1).then(resp => {
+      this.$axios.get('/finance/finance/expense/'+this.$store.state.user).then(resp => {
         if (resp && resp.data.code === 200) {
           console.log(resp.data.object)
           this.food = parseInt(resp.data.object.food)

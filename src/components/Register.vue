@@ -74,21 +74,42 @@ export default {
       let faceBase = userImgSrc.split(",")[1];
       // alert(faceBase);
 
-
-      this.$axios
-        .post('/authface/user/sregister?account='+this.form.username+'&nickname='+this.form.nickname+'&password='+this.form.password)
-        .then(resp => {
-          if (resp.data.code === 200) {
-            // 前端也保存用户登录状态
-            console.log(resp.data.object)
-            _this.$router.push('/login')
-          } else {
-            this.$alert(resp.data.msg, '提示', {
-              confirmButtonText: '确定'
-            })
-          }
-        })
-        .catch(failResponse => {})
+      // 注册带人脸信息
+      if(faceBase!==null){
+        this.$axios
+          .post('http://localhost:9410/user/register',{
+            account: this.form.username,
+            nickname: this.form.nickname,
+            password: this.form.password,
+            faceBase64: faceBase
+          })
+          .then(resp => {
+            // console.log(faceBase)
+              // 前端也保存用户登录状态
+              console.log(resp)
+              _this.$router.push('/login')
+          })
+          .catch(failResponse => {
+          })
+      }
+      // 简易注册（不带人脸）
+      else {
+        this.$axios
+          .post('/authface/user/sregister?account=' + this.form.username + '&nickname=' + this.form.nickname + '&password=' + this.form.password)
+          .then(resp => {
+            if (resp.data.code === 200) {
+              // 前端也保存用户登录状态
+              console.log(resp.data.object)
+              _this.$router.push('/login')
+            } else {
+              this.$alert(resp.data.msg, '提示', {
+                confirmButtonText: '确定'
+              })
+            }
+          })
+          .catch(failResponse => {
+          })
+      }
 
     },
     openCamera(){

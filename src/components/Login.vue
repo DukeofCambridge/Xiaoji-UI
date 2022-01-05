@@ -53,7 +53,7 @@ export default {
             // _this.$store.commit('setToken',resp.data.object)
             // console.log(_this.$store.state.username)
             // console.log(_this.$store.state.role)
-            _this.$router.push('/home')
+            _this.$router.replace('/home')
           } else {
             this.$alert(resp.data.msg, '提示', {
               confirmButtonText: '确定'

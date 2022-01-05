@@ -26,7 +26,7 @@ export default {
       let _this = this
       let type = this.$refs.sideMenu.type
       console.log(type)
-      let url = '/movie/type/' + type
+      let url = '/movie/movie/type/' + type
       this.$axios.get(url).then(resp => {
         if (resp && resp.data.code === 200) {
           _this.$refs.booksArea.films = resp.data.object

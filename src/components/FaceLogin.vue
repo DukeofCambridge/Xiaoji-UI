@@ -63,26 +63,18 @@ export default {
       //拿到bash64格式的照片信息: 去除标签 --- data:image/png;base64,
       let faceBase = userImgSrc.split(",")[1];
       // alert(faceBase);
-
-      let formdata = new FormData();
-      formdata.append("faceBase64", "" + faceBase);
-
-      let requestOptions = {
-        method: 'POST',
-        body: formdata,
-        redirect: 'follow'
-      };
-
-      fetch("http://localhost:8080/faceLogin", requestOptions)
-        .then(response => response.text())
-        .then(result => {
-          // alert(result);
-          console.log(result);
-          if (result == "SUCCESS") {
-            window.location.href = "http://127.0.0.1:5503/AIsingFont/src/home.html"
-          }
+      // console.log(faceBase)
+      this.$axios
+        .post('http://localhost:9410/user/facelogin',{
+          faceBase64: faceBase
         })
-        .catch(error => console.log('error', error));
+        .then(resp => {
+          console.log(resp.data.object)
+          // this.$store.commit('login', resp.data.object.id)
+          this.$router.replace('/home')
+        })
+        .catch(failResponse => {
+        })
     }
   },
 

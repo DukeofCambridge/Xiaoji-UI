@@ -164,19 +164,19 @@ export default {
   },
   methods:{
     show1(){
-      this.$message("您已进入工作模式")
+      this.$message("您已进入工作模式，当前温度:20度; 当前光强:600")
     },
     show2(){
-      this.$message("您已进入观影模式")
+      this.$message("您已进入观影模式，当前温度:16度; 当前光强:200")
     },
     show3(){
-      this.$message("您已进入浪漫模式")
+      this.$message("您已进入浪漫模式，当前温度:24度; 当前光强:500")
     },
     show4(){
-      this.$message("您已进入音乐模式")
+      this.$message("您已进入音乐模式，当前温度:21度; 当前光强:600")
     },
     show5(){
-      this.$message("您已进入节日模式")
+      this.$message("您已进入节日模式，当前温度:22度; 当前光强:700")
     },
   }
 }

@@ -90,8 +90,28 @@ export default {
       this.$refs.FormRef.validate(async valid =>{
         if(!valid) return
         console.log(this.Form)
+        // await fetch('http://localhost:8080/finance/finance/addBill', {
+        //   method: 'POST',
+        //   mode: 'no-cors',
+        //   headers: {
+        //     'Content-Type': 'application/json'
+        //   },
+        //   body: JSON.stringify({
+        //     name:this.Form.name,
+        //     type: this.Form.type,
+        //     date:this.Form.date,
+        //     amount:this.Form.amount,
+        //     familyId: this.$store.state.user
+        //   })
+        // })
+        //   .then(result => {
+        //     // alert(result);
+        //     console.log(result);
+        //   })
+        //   .catch(error => console.log('error', error));
+
         this.$axios
-          .post('/finance/finance/addBill', {
+          .post('http://localhost:9208/finance/addBill', {
             name:this.Form.name,
             type: this.Form.type,
             date:this.Form.date,
@@ -106,7 +126,7 @@ export default {
               this.dialogFormVisible = false
             }
           })
-          .catch(failResponse => {})
+          .catch(failResponse => {this.$alert(failResponse)})
       })
 
     }

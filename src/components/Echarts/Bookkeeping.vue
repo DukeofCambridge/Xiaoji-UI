@@ -125,6 +125,7 @@ export default {
               this.clear()
               this.dialogFormVisible = false
             }
+            this.$emit('update')
           })
           .catch(failResponse => {this.$alert(failResponse)})
       })

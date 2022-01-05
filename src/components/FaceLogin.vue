@@ -69,9 +69,14 @@ export default {
           faceBase64: faceBase
         })
         .then(resp => {
-          console.log(resp.data.object)
-          // this.$store.commit('login', resp.data.object.id)
-          this.$router.replace('/home')
+          console.log(resp)
+          if(resp.data!=="FAILED"){
+            this.$store.commit('login', resp.data.object.id)
+            this.$router.replace('/home')
+          }else{
+            this.$alert("匹配失败！请录入人脸信息")
+          }
+
         })
         .catch(failResponse => {
         })

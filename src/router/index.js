@@ -133,7 +133,8 @@ const routes = [
     path: '/music',
     name: 'Music',
     component: music
-  }
+  },
+
 ]
 
 const router = new VueRouter({

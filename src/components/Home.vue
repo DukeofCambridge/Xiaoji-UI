@@ -45,6 +45,7 @@
           </div>
         </div>
 
+        <!--
         <div class="apple-style-gallery">
           <div class="gallery-frame left-top" style="grid-area: left-top;" @click="show1">
             <img title="工作模式" src="https://consumer.huawei.com/content/dam/huawei-cbg-site/greate-china/cn/mkt/wholehome/intelligent-scenes/imgs/kv/huawei-whole-home-intelligent-scenes@2x.webp"  draggable="false"/>
@@ -54,7 +55,6 @@
           -webkit-background-clip: text;
           color: transparent;
           margin-top: 5px;">工作模式</h1>
-            <!--          <img src="../assets/img/bills.jpg" alt="账单" draggable="false" @click="$router.push('/finance')"/>-->
           </div>
           <div class="gallery-frame" style="grid-area: top-2;border-radius: 35px">
             <h1 style="font-size: 50px; margin-top: 25px;background: linear-gradient(to right, #FFD26F, #3677FF);
@@ -63,7 +63,6 @@
             <h1 style="font-size: 30px; background: linear-gradient(to right, #FFD26F, #3677FF);
         -webkit-background-clip: text;
         color: transparent;margin-top: 5px;">&nbsp;&nbsp;足不出户<br>享受视听盛宴</h1>
-            <!--          <img src="../assets/img/weather.jpg" alt="天气" draggable="false" @click="$router.push('/weather')" />-->
           </div>
           <div class="gallery-frame right-top" style="grid-area: right-top;">
             <div><img src="../assets/img/Theater.png" alt="电影" draggable="false" @click="show2"/></div>
@@ -81,10 +80,8 @@
           </div>
           <div class="gallery-frame left-bottom-1" style="grid-area: left-bottom-1;zoom: 118%">
             <div style="margin-top: 20px;"><img src="../assets/img/roses.jpg" alt="灯光" draggable="false"/></div>
-            <!--          <div><img src="../assets/img/air.webp" alt="温度" draggable="false"/></div>-->
           </div>
           <div class="gallery-frame" style="grid-area: left-bottom-2;">
-            <!--          <img src="../assets/img/setting.jpg" alt="" draggable="false"/>-->
           </div>
           <div class="gallery-frame left-bottom-3" style="grid-area: left-bottom-3;" @click="show3">
             <div><img src="../assets/img/romantic.jpeg" draggable="false"/></div>
@@ -97,10 +94,9 @@
             <img title="节日模式" src="../assets/img/Victoria-Harbour.jpg"  draggable="false"/>
           </div>
         </div>
+        -->
+
       </div>
-
-      <!--        <div class="card" v-show="isShow">您已进入{{ mode}}模式</div>-->
-
       <div id="gallery-left-arrow" class="arrow left">&lt;</div>
       <div id="gallery-right-arrow" class="arrow right">&gt;</div>
     </div>
@@ -115,19 +111,16 @@ window.onload = function(){
     gallery.style.left = index*100 + "%";
     ++counter;
   });
-
-
   let rate = 0;
   let outterPadding = 80, innerPadding=10;
   document.getElementById("gallery-right-arrow").addEventListener("click", ()=>{
     rate += 1;
-    if(rate == counter){
+    if(rate === counter){
       rate = counter - 1;
       noMoreCallBack("gallery-right-arrow");
     }
     galleryTransformCallBack();
   });
-
   document.getElementById("gallery-left-arrow").addEventListener("click", ()=>{
     rate -= 1;
     if(rate < 0) {
@@ -136,13 +129,11 @@ window.onload = function(){
     }
     galleryTransformCallBack();
   });
-
   // let slideUpdateTimeInterval = 10000;
   // setInterval(()=>{
   //   rate = (rate + 1) % counter;
   //   galleryTransformCallBack();
   // }, slideUpdateTimeInterval);
-
   function noMoreCallBack(id){
     var arrow = document.getElementById(id);
     arrow.style.animation = "noMoreAnimation 1s";
@@ -150,7 +141,6 @@ window.onload = function(){
       arrow.style.animation = "";
     });
   }
-
   function galleryTransformCallBack(){
     document.querySelectorAll(".apple-style-gallery").forEach((gallery)=>{
       gallery.style.transform = "translateX(calc("+ rate*-100 +"% - " + (outterPadding*2*rate - innerPadding*2*rate - outterPadding)+ "px))";
@@ -160,9 +150,43 @@ window.onload = function(){
 export default {
   name: "Home",
   data(){
-    return{}
+    return{
+      // counter: 0,
+      // rate: 0,
+      // outterPadding:80,
+      // innerPadding:10
+    }
   },
   methods:{
+    /*
+    galleryTransformCallBack(){
+      document.querySelectorAll(".apple-style-gallery").forEach((gallery)=>{
+        gallery.style.transform = "translateX(calc("+ this.rate*-100 +"% - " + (this.outterPadding*2*this.rate - this.innerPadding*2*this.rate - this.outterPadding)+ "px))";
+      });
+    },
+    goright(){
+      this.rate += 1;
+      if(this.rate === this.counter){
+        this.rate = this.counter - 1;
+        this.noMoreCallBack("gallery-right-arrow");
+      }
+      this.galleryTransformCallBack();
+    },
+    goleft(){
+      this.rate -= 1;
+      if(this.rate < 0) {
+        this.rate = 0;
+        this.noMoreCallBack("gallery-left-arrow");
+      }
+      this.galleryTransformCallBack();
+    },
+    noMoreCallBack(id){
+      let arrow = document.getElementById(id);
+      arrow.style.animation = "noMoreAnimation 1s";
+      arrow.addEventListener("animationend", () => {
+        arrow.style.animation = "";
+      });
+    },
     show1(){
       this.$message("您已进入工作模式，当前温度:20度; 当前光强:600")
     },
@@ -177,7 +201,7 @@ export default {
     },
     show5(){
       this.$message("您已进入节日模式，当前温度:22度; 当前光强:700")
-    },
+    },*/
   }
 }
 </script>
